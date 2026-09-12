@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - ground
+  - damage
+  - intertact
+  - player_attack
+  - enemy_attack
+  - player_fake
+  - die
+  - next_stage
+  - intertact_hold
+  - stage_start
+  - No
+  - EnemyAttack
+  - PlayerAttack
+  - Damage
+  - Interact
+  - InteractHold
+  - SoundManager
+  - test1
+  - test2
+  - test3
+  - NoDamage
+  - Option
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ground
+  - player
+  - enemy
+  - enemy_body
+  - enemy_attack
+  - wall
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []

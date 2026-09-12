@@ -1,0 +1,11 @@
+part2_63_hit
+
+242_player_attack
+
+part12_589_enemyattack
+
+part8_395_gold_2attack
+
+part3_126_bossattack1
+
+part8_375_bossattack2
