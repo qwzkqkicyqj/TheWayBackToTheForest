@@ -34,7 +34,6 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
 
     void Start()
     {
-        Application.targetFrameRate = 60;
         Animator = GetComponent<Animator>();
         float rotation = QuestionMark.transform.localRotation.x;
         float position = QuestionMark.transform.localPosition.x;
@@ -138,6 +137,10 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
             {
                 RigidBody2D.linearVelocityX = -_speed;
             }
+        }
+        else
+        {
+            RigidBody2D.linearVelocityX = 0;
         }
     }
     

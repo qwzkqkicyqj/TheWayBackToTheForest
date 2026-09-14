@@ -20,6 +20,7 @@ public class StartCutscene1 : MonoBehaviour
     public SpriteRenderer PlayerSpriteRenderer;
     public CutsceneSkip CutsceneSkipCode;
     public GameObject CutsceneSkipObject;
+    public Transform BackGroundTransform;
     public Transform PlayerTransform;
     Coroutine _cutsceneSkip;
 
@@ -44,6 +45,7 @@ public class StartCutscene1 : MonoBehaviour
             Player.IsEnd = true;    
             Barrier.SetActive(true);
             PlayerTransform.position = new Vector3(154.8972f, -2.969146f, 0);
+            BackGroundTransform.position = new Vector3(154.8972f, BackGroundTransform.position.y, 0);
             Destroy(gameObject);
         }
     }

@@ -41550,6 +41550,7 @@ MonoBehaviour:
   PlayerSpriteRenderer: {fileID: 824092459}
   CutsceneSkipCode: {fileID: 443991031}
   CutsceneSkipObject: {fileID: 443991028}
+  BackGroundTransform: {fileID: 431024256}
   PlayerTransform: {fileID: 824092460}
 --- !u!61 &1704664549
 BoxCollider2D:

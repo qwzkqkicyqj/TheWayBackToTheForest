@@ -56,29 +56,29 @@ public class WhiteSkeletonRange : MonoBehaviour
             Target = null;
         }
     }
-    void OnDrawGizmos()
-    {
-        if (LeftAir != null)
-        {
-            bool hit = Physics2D.OverlapCircle(
-                LeftAir.transform.position,
-                AirCheckRadius,
-                Ground);
+    //void OnDrawGizmos()
+    //{
+    //    if (LeftAir != null)
+    //    {
+    //        bool hit = Physics2D.OverlapCircle(
+    //            LeftAir.transform.position,
+    //            AirCheckRadius,
+    //            Ground);
 
-            Gizmos.color = hit ? Color.green : Color.red;
-            Gizmos.DrawWireSphere(LeftAir.transform.position, AirCheckRadius);
-        }
+    //        Gizmos.color = hit ? Color.green : Color.red;
+    //        Gizmos.DrawWireSphere(LeftAir.transform.position, AirCheckRadius);
+    //    }
 
-        if (RightAir != null)
-        {
-            bool hit = Physics2D.OverlapCircle(
-                RightAir.transform.position,
-                AirCheckRadius,
-                Ground);
+    //    if (RightAir != null)
+    //    {
+    //        bool hit = Physics2D.OverlapCircle(
+    //            RightAir.transform.position,
+    //            AirCheckRadius,
+    //            Ground);
 
-            Gizmos.color = hit ? Color.green : Color.red;
-            Gizmos.DrawWireSphere(RightAir.transform.position, AirCheckRadius);
-        }
+    //        Gizmos.color = hit ? Color.green : Color.red;
+    //        Gizmos.DrawWireSphere(RightAir.transform.position, AirCheckRadius);
+    //    }
 
-    }
+    //}
 }

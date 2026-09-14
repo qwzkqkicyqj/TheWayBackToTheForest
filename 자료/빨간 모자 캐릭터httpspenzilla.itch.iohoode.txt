@@ -1,0 +1,32 @@
+빨간 모자 캐릭터:https://penzilla.itch.io/hooded-protagonist (개인 및 상업적 목적으로 사용 가능, 단 출처 명시)
+
+던전 에셋 : https://incolgames.itch.io/dungeon-platformer-tile-set-pixel-art (개인 및 상업적 목적으로 사용 가능, 단 출처 명시)
+
+체력바: https://fliflifly.itch.io/hearts-and-health-bar (개인 및 상업적 목적으로 사용 가능)
+
+보스: https://lucky-loops.itch.io/character-satyr(개인 및 상업적 목적으로 사용 가능, 단 출처 명시)
+
+폰트 : https://github.com/hurss/fonts
+
+키보드 아이콘 : https://dreammixgames.itch.io/keyboard-keys-for-ui
+
+빛나는 이펙트(상호작용) : https://bdragon1727.itch.io/fx-pixel-texture
+
+텍스트 이펙트 : https://github.com/LeiQiaoZhi/Easy-Text-Effects-for-Unity
+
+스켈레톤 포함 여러 몹:https://monopixelart.itch.io/
+
+숲 에셋 : https://assetstore.unity.com/packages/2d/environments/2d-pixel-art-platformer-biome-american-forest-255694
+
+보스 공격 이펙트(페이지 1) : https://bdragon1727.itch.io/free-effect-and-bullet-16x16
+
+플레이어 및 적 공격 추가 이펙트 : https://bdragon1727.itch.io/750-effect-and-fx-pixel-all
+
+포션: https://allnew.itch.io/flask-icons-32x32px
+
+효과음 대부분의 효과음: https://tommusic.itch.io/free-fantasy-200-sfx-pack
+-> 환경, 발소리, 점프, 착지 등
+
+음산한 효과음 및 플레이어 어택: https://yourpalrob.itch.io/must-have-horror-sound-effects
+
+쪽지 및 : https://ci.itch.io/400-sounds-pack
