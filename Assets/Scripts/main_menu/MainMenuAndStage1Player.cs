@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -11,19 +12,60 @@ public class MainMenuAndStage1Player : MonoBehaviour
     public MainMenu MainMenuCode;
     public Animator Animator;
     public SpriteRenderer SpriteRenderer;
+    public Rigidbody2D Rigidbody2D;
+    float _groundCheckRadius = 0.1f;
 
     public bool IsStop = false;
     public bool IsEnd = false;
     public bool IsFPress = false;
     bool _intertact = false;
+    public AudioClip DirtFootStep;
+    public AudioClip StoneFootStep;
+    public AudioSource FootStep;
+    public Transform GroundCheck;
+    public LayerMask Stone;
+    public LayerMask Dirt;
 
     int _stop = 0;
     Vector2 _dir;
     private void Update()
     {
         //멈춰있다면 idle실행
-        Animator.SetBool("idle", gameObject.GetComponent<Rigidbody2D>().linearVelocityX == 0);
-
+        Animator.SetBool("idle", Rigidbody2D.linearVelocityX == 0);
+        
+        if (Rigidbody2D.linearVelocityX != 0)
+        {
+            if (Physics2D.OverlapCircle(GroundCheck.position, _groundCheckRadius, Stone))
+            {
+                if(FootStep.clip != StoneFootStep)
+                {
+                    FootStep.Stop();
+                    FootStep.clip = StoneFootStep;
+                    FootStep.Play();
+                }
+                else
+                {
+                    FootStep.UnPause();
+                }
+            }
+            else if (Physics2D.OverlapCircle(GroundCheck.position, _groundCheckRadius, Dirt))
+            {
+                if (FootStep.clip != DirtFootStep)
+                {
+                    FootStep.Stop();
+                    FootStep.clip = DirtFootStep;
+                    FootStep.Play();
+                }
+                else
+                {
+                    FootStep.UnPause();
+                }
+            }
+        }
+        else
+        {
+            FootStep.Pause();
+        }
         // -> 이를 통해 게임 시작 전 플레이어가 같은 스테이지에서 반복적으로 이동하도록 제작
         //플레이어가 특정 위치(가장 오른쪽 지역)에 도달하고, 제목이 사라지지 않았다면(아직 새 게임이 시작되지 않았다면)
         if (transform.position.x >= Background[2].GetComponent<Transform>().position.x && !MainMenuCode.TitleFadeEnd)
@@ -39,7 +81,7 @@ public class MainMenuAndStage1Player : MonoBehaviour
         if ((Mathf.Abs(transform.position.x - Background[0].transform.position.x) < 0.1f || Mathf.Abs(transform.position.x - Background[1].transform.position.x) < 0.1f || Mathf.Abs(transform.position.x - Background[2].transform.position.x) < 0.1f) && MainMenuCode.TitleFadeEnd)
         {
             //숲 스테이지로 이동
-            transform.position = new Vector3(120.716f, -2.969164f, transform.position.z); 
+            transform.position = new Vector3(120.716f, -2.969164f, transform.position.z);
             //플레이어 위치로 배경 이동(플레이어가 이동된 후 다음 프레임에 배경이 이동되는것을 막기 위해)
             BackgroundMain.transform.position = new Vector3(transform.position.x, BackgroundMain.transform.position.y, BackgroundMain.transform.position.z);
             //일시정지 매니저 오브젝트 활성화
@@ -58,28 +100,22 @@ public class MainMenuAndStage1Player : MonoBehaviour
         {
             SpriteRenderer.flipX = true;
         }
-
-        if (IsStop && _stop == 0)
-        {
-            _stop++;
-        }
-
     }
 
     void FixedUpdate()
     {
-        if (_stop == 0)
+        if (!IsStop)
         {
-            gameObject.GetComponent<Rigidbody2D>().linearVelocityX = 5f;
+            Rigidbody2D.linearVelocityX = 5f;
         }
-        else if (_stop == 1)
+        else if (IsStop)
         {
-            gameObject.GetComponent<Rigidbody2D>().linearVelocityX = 0f;
+            Rigidbody2D.linearVelocityX = 0f;
         }
 
         if (IsEnd)
         {
-            gameObject.GetComponent<Rigidbody2D>().linearVelocityX = 5 * _dir.x;
+            Rigidbody2D.linearVelocityX = 5 * _dir.x;
         }
     }
     void OnMove(InputValue value)

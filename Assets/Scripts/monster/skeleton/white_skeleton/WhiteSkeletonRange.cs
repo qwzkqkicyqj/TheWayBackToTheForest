@@ -56,6 +56,7 @@ public class WhiteSkeletonRange : MonoBehaviour
             Target = null;
         }
     }
+
     //void OnDrawGizmos()
     //{
     //    if (LeftAir != null)

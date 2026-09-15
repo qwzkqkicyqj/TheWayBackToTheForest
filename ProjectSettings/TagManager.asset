@@ -5,15 +5,6 @@ TagManager:
   serializedVersion: 3
   tags:
   - ground
-  - damage
-  - intertact
-  - player_attack
-  - enemy_attack
-  - player_fake
-  - die
-  - next_stage
-  - intertact_hold
-  - stage_start
   - No
   - EnemyAttack
   - PlayerAttack
@@ -26,6 +17,11 @@ TagManager:
   - test3
   - NoDamage
   - Option
+  - Stone
+  - Dirt
+  - next_stage
+  - stage_start
+  - player_attack
   layers:
   - Default
   - TransparentFX
@@ -40,8 +36,8 @@ TagManager:
   - enemy_attack
   - wall
   - 
-  - 
-  - 
+  - Stone
+  - Dirt
   - 
   - 
   - 

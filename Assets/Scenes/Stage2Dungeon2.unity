@@ -3007,9 +3007,11 @@ MonoBehaviour:
   AttackSound: {fileID: 8300000, guid: 4763b6a31662be14a8a43539e91f1c40, type: 3}
   JumpSound: {fileID: 8300000, guid: deca3c9f18b19ac4ba463b26e5af9c5d, type: 3}
   DoubleJumpSound: {fileID: 8300000, guid: 25216fb4bb023874ca3d7852f5608282, type: 3}
-  MoveSound: {fileID: 0}
+  RunSound: {fileID: 0}
+  WarkSound: {fileID: 0}
   HitSound: {fileID: 0}
   DashSound: {fileID: 8300000, guid: a082481f25fab87439c74662ee023a7f, type: 3}
+  LandSound: {fileID: 0}
   Speed: 10
   JumpPower: 15
   JumpPlusPower: 12
@@ -3790,7 +3792,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::End2_2
   PlayerCamera: {fileID: 1080042988}
-  CutsceneBackground: {fileID: 1459745402}
   PlayerCode: {fileID: 290029070}
   PlayerObject: {fileID: 290029070}
 --- !u!1 &375194232
@@ -7012,6 +7013,7 @@ MonoBehaviour:
   SkeletonCode: {fileID: 1219056664}
   PlayerSpriteRenderer: {fileID: 290029068}
   SkeletonSpriteRenderer: {fileID: 1219056668}
+  SkeletonRigidBody2D: {fileID: 1219056665}
 --- !u!61 &791819135
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14259,6 +14261,7 @@ MonoBehaviour:
   SkeletonCode: {fileID: 2093872098}
   PlayerSpriteRenderer: {fileID: 290029068}
   SkeletonSpriteRenderer: {fileID: 2093872097}
+  SkeletonRigidBody2D: {fileID: 2093872096}
 --- !u!61 &1203395155
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14372,6 +14375,7 @@ MonoBehaviour:
   IsStun: 0
   StunEffect: {fileID: 409277359}
   PlayerSpriteRenderer: {fileID: 290029068}
+  AttackSound: {fileID: 0}
   QuestionMark: {fileID: 663232130}
   ExclamationMark: {fileID: 581132204}
 --- !u!50 &1219056665
@@ -20021,6 +20025,7 @@ MonoBehaviour:
   SkeletonCode: {fileID: 1793404266}
   PlayerSpriteRenderer: {fileID: 290029068}
   SkeletonSpriteRenderer: {fileID: 1793404269}
+  SkeletonRigidBody2D: {fileID: 1793404265}
 --- !u!61 &1416989181
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22137,6 +22142,7 @@ MonoBehaviour:
   IsStun: 0
   StunEffect: {fileID: 911247519}
   PlayerSpriteRenderer: {fileID: 290029068}
+  AttackSound: {fileID: 0}
   QuestionMark: {fileID: 2039489153}
   ExclamationMark: {fileID: 332415079}
 --- !u!70 &1793404267
@@ -93825,6 +93831,7 @@ MonoBehaviour:
   IsStun: 0
   StunEffect: {fileID: 797764585}
   PlayerSpriteRenderer: {fileID: 290029068}
+  AttackSound: {fileID: 0}
   QuestionMark: {fileID: 676389481}
   ExclamationMark: {fileID: 2130759788}
 --- !u!95 &2093872099

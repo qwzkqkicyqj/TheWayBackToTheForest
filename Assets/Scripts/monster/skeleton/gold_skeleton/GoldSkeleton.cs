@@ -122,7 +122,7 @@ public class GoldSkeleton : MonoBehaviour, IEnemyStun
     }
     void Rotation()
     {
-        if (!IsHurt && SkeletonRange.Target != null && !IsAttack && !IsStun)
+        if (!IsHurt && SkeletonRange.Target != null && !IsAttack && !IsStun && !IsDie)
         {
             if (SkeletonRange.Target.transform.position.x <= gameObject.transform.position.x)
             {
@@ -138,7 +138,7 @@ public class GoldSkeleton : MonoBehaviour, IEnemyStun
     }
     void Move()
     {
-        if (SkeletonRange.Target != null && !IsAttack && !(Mathf.Abs(SkeletonRange.Target.transform.position.x - transform.position.x) <= 4) && !IsHurt &&!IsDie && !IsStun)
+        if (SkeletonRange.Target != null && !IsAttack && !(Mathf.Abs(SkeletonRange.Target.transform.position.x - transform.position.x) <= 4) &&!IsDie && !IsStun)
         {
             if (SkeletonRange.Target.GetComponent<Transform>().position.x > gameObject.transform.position.x)
             {
@@ -158,7 +158,7 @@ public class GoldSkeleton : MonoBehaviour, IEnemyStun
 
     void Attack()
     {
-        if (SkeletonRange.Target != null && Mathf.Abs(SkeletonRange.Target.transform.position.x - transform.position.x) <= 4 && !IsAttack && SkeletonRange.Target.transform.position.y < transform.position.y && !IsDie && !IsStun && !IsHurt)
+        if (SkeletonRange.Target != null && Mathf.Abs(SkeletonRange.Target.transform.position.x - transform.position.x) <= 4 && !IsAttack && SkeletonRange.Target.transform.position.y < transform.position.y && !IsDie && !IsStun)
         {
             if (LastAttack >= _attackCooltime)
             {
@@ -222,7 +222,6 @@ public class GoldSkeleton : MonoBehaviour, IEnemyStun
     IEnumerator StunDuration()
     {
         yield return TimeManager.s_Wait_3s;
-        IsHurt = false;
         IsStun = false;
     }
 
@@ -243,11 +242,13 @@ public class GoldSkeleton : MonoBehaviour, IEnemyStun
             if (!PlayerSpriteRenderer.flipX)
             {
                 SpriteRenderer.flipX = true;
+                RigidBody2D.linearVelocityX = 0;
                 RigidBody2D.AddForceX(3, ForceMode2D.Impulse);
             }
             else if (PlayerSpriteRenderer.flipX)
             {
                 SpriteRenderer.flipX = false;
+                RigidBody2D.linearVelocityX = 0;
                 RigidBody2D.AddForceX(-3, ForceMode2D.Impulse);
             }
         }

@@ -14,10 +14,11 @@ public class WhiteSkeletonBody : MonoBehaviour
     public WhiteSkeleton SkeletonCode;
     public SpriteRenderer PlayerSpriteRenderer;
     public SpriteRenderer SkeletonSpriteRenderer;
+    public Rigidbody2D SkeletonRigidBody2D;
 
     public int _stunCount { get; set; }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("PlayerAttack"))
         {
@@ -32,12 +33,14 @@ public class WhiteSkeletonBody : MonoBehaviour
             if (!PlayerSpriteRenderer.flipX)
             {
                 SkeletonObject.GetComponent<SpriteRenderer>().flipX = true;
-                SkeletonObject.GetComponent<Rigidbody2D>().AddForceX(KnockbackForce, ForceMode2D.Impulse);
+                SkeletonRigidBody2D.linearVelocityX = 0;
+                SkeletonRigidBody2D.AddForceX(KnockbackForce, ForceMode2D.Impulse);
             }
             else if (PlayerSpriteRenderer.flipX)
             {
                 SkeletonObject.GetComponent<SpriteRenderer>().flipX = false;
-                SkeletonObject.GetComponent<Rigidbody2D>().AddForceX(-KnockbackForce, ForceMode2D.Impulse);
+                SkeletonRigidBody2D.linearVelocityX = 0;
+                SkeletonRigidBody2D.AddForceX(-KnockbackForce, ForceMode2D.Impulse);
             }
             if (SkeletonCode.Hp <= 0)
             {

@@ -4040,7 +4040,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.700001, y: -2.35, z: -10}
+  m_LocalPosition: {x: -7.700001, y: -3.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11387,6 +11387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 870277823}
+  - component: {fileID: 870277824}
   m_Layer: 0
   m_Name: RightGroundCheck
   m_TagString: Untagged
@@ -11409,6 +11410,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2135957201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &870277824
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870277822}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.04
 --- !u!1 &881095527
 GameObject:
   m_ObjectHideFlags: 0
@@ -73300,10 +73337,11 @@ MonoBehaviour:
   KnockbackForce: 3
   Player: {fileID: 2135957197}
   SkeletonCode: {fileID: 309079340}
-  KeyPrefab: {fileID: 727332386016524191, guid: 43ac0066f21e5554aa50ea5eed4528d5, type: 3}
-  SkeletonAttackHitboxCollder2D: {fileID: 683360480}
   PlayerSpriteRenderer: {fileID: 2135957200}
+  SkeletonSpriteRenderer: {fileID: 309079343}
+  SkeletonRigidBody2D: {fileID: 309079339}
   PotionPrefab: {fileID: 6077742661052798855, guid: 92b19223d8b49864a97103fba3a97b99, type: 3}
+  KeyPrefab: {fileID: 727332386016524191, guid: 43ac0066f21e5554aa50ea5eed4528d5, type: 3}
 --- !u!1 &1754627398
 GameObject:
   m_ObjectHideFlags: 0
@@ -73802,7 +73840,7 @@ Transform:
   m_GameObject: {fileID: 1766344092}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.7, y: -2.35, z: -10}
+  m_LocalPosition: {x: -7.7, y: -3.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75634,7 +75672,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!114 &1980301006
 MonoBehaviour:
@@ -76066,6 +76104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2025502450}
+  - component: {fileID: 2025502451}
   m_Layer: 0
   m_Name: LeftGroundCheck
   m_TagString: Untagged
@@ -76088,6 +76127,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2135957201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2025502451
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025502449}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.04
 --- !u!1 &2031982352
 GameObject:
   m_ObjectHideFlags: 0
@@ -76952,7 +77027,7 @@ Transform:
   m_GameObject: {fileID: 2135957197}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.7, y: -2.35, z: 0}
+  m_LocalPosition: {x: -7.7, y: -3.02, z: 0}
   m_LocalScale: {x: 2.0263, y: 2.046, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

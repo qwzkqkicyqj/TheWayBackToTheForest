@@ -271,7 +271,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Damage") && !IsDash) //충돌한 오브젝트의 태그가 damage라면
+        if (collision.transform.CompareTag("Damage") && !IsDash && !_isHurt && !IsInvincible && !IsDie) //충돌한 오브젝트의 태그가 damage라면
         {
             s_HP -= 20;
             if (s_HP <= 0)
@@ -290,7 +290,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Damage") && !IsDash && !IsDie) //충돌한 오브젝트의 태그가 damage라면
+        if (collision.CompareTag("Damage") && !IsDash && !IsDie && !_isHurt && !IsInvincible) //충돌한 오브젝트의 태그가 damage라면
         {
             s_HP -= 20;
             if (s_HP <= 0)

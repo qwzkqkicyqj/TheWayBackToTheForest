@@ -133,12 +133,12 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
             {
                 RigidBody2D.linearVelocityX = _speed;
             }
-            else if(SkeletonRange.Target.GetComponent<Transform>().position.x < gameObject.transform.position.x)
+            else if (SkeletonRange.Target.GetComponent<Transform>().position.x < gameObject.transform.position.x)
             {
                 RigidBody2D.linearVelocityX = -_speed;
             }
         }
-        else
+        if(IsDie || SkeletonRange.Target == null)
         {
             RigidBody2D.linearVelocityX = 0;
         }
@@ -176,7 +176,6 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
     IEnumerator StunDuration()
     {
         yield return TimeManager.s_Wait_3s;
-        IsHurt = false;
         IsStun = false;
     }
 
@@ -190,11 +189,13 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
         if (!PlayerSpriteRenderer.flipX)
         {
             SpriteRenderer.flipX = true;
+            RigidBody2D.linearVelocityX = 0;
             RigidBody2D.AddForceX(3, ForceMode2D.Impulse);
         }
         else if (PlayerSpriteRenderer.flipX)
         {
             SpriteRenderer.flipX = false;
+            RigidBody2D.linearVelocityX = 0;
             RigidBody2D.AddForceX(-3, ForceMode2D.Impulse);
         }
     }
