@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1f12875f4e29248ba6d89e36296a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  PotionGetSound: {fileID: 8300000, guid: 99b46b5c5be6d0844a0efb3f8c2a72f1, type: 3}
   FMessage: {fileID: 5314677839084095144}
 --- !u!1 &6839816162197672793
 GameObject:

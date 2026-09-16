@@ -18,6 +18,7 @@ public class SoundManager : MonoBehaviour
     public static bool s_SFXVolumeMute;
     public static bool s_MasterVolumeMute;
     public AudioMixer AudioMixer;
+    public AudioSource BossSayEffectAudioSource;
     private void Awake()
     {
         if (Instance == null)
@@ -100,5 +101,14 @@ public class SoundManager : MonoBehaviour
     public void FootStepStop()
     {
         SFXAudioSource.Stop();
+    }
+
+    public void BossSayEffectPlay()
+    {
+        BossSayEffectAudioSource.Play();
+    }
+    public void BossSayEffectStop()
+    {
+        BossSayEffectAudioSource.Stop();
     }
 }

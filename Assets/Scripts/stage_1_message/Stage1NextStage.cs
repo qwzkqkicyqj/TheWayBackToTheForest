@@ -13,20 +13,24 @@ public class Stage1NextStage : MonoBehaviour
     bool isInArea = false;
     public GameObject FireBall;
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D collison)
     {
-        if(!isInArea)
+        if(collison.CompareTag("Player"))
         {
-            isInArea = true;
-            StartCoroutine(cutscene());
-        }
-       
+            if (!isInArea)
+            {
+                isInArea = true;
+                StartCoroutine(NextStage());
+            }
+        }       
     }
-    IEnumerator cutscene()
+    IEnumerator NextStage()
     {
+        SoundManager.Instance.BossSayEffectPlay();
         Message1.SetActive(true);
         yield return TimeManager.s_Wait_3s;
         Message1.SetActive(false);
+        SoundManager.Instance.BossSayEffectPlay();
         Message2.SetActive(true);
         yield return TimeManager.s_Wait_3s;
         Message2.SetActive(false);

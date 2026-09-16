@@ -97,10 +97,12 @@ public class Player : MonoBehaviour
     Vector3 _originalHealEffectLocalScale;
     Vector3 _originalHealEffectLocalPosition;
 
-    public CanvasGroup DieWindow;
-    float _dieWindowTime = 3;
-    public float _dieWindowTimer =0;
-    bool _isFootStepSoundPlay = false;
+    //public CanvasGroup DieWindow;
+    //float _dieWindowTime = 3;
+    //public float _dieWindowTimer =0;
+    //bool _isFootStepSoundPlay = false;
+    public AudioSource PlayerAudioSource;
+
     private void Awake()
     {
         _originalParryScale = ParryTransform.localScale;
@@ -142,23 +144,38 @@ public class Player : MonoBehaviour
             UsePotionTimer = 0;
         }
 
-        if (!_isFootStepSoundPlay && _isGround && math.abs(RigidBody2D.linearVelocityX) > 0.1f)
+        if (_isGround && math.abs(RigidBody2D.linearVelocityX) > 0.1f)
         {
             if(!IsUsePotion && !_isAttack)
             {
-                _isFootStepSoundPlay = true;
-                SoundManager.Instance.FootStepPlay(RunSound);
+                if(PlayerAudioSource.clip == WarkSound)
+                {
+                    PlayerAudioSource.UnPause();
+                }
+                else
+                {
+                    PlayerAudioSource.Stop();
+                    PlayerAudioSource.clip = WarkSound;
+                    PlayerAudioSource.Play();
+                }
             }
             else
             {
-                _isFootStepSoundPlay = true;
-                SoundManager.Instance.FootStepPlay(WarkSound);
+                if(PlayerAudioSource.clip == RunSound)
+                {
+                    PlayerAudioSource.UnPause();
+                }
+                else
+                {
+                    PlayerAudioSource.Stop();
+                    PlayerAudioSource.clip = RunSound;
+                    PlayerAudioSource.Play();
+                }
             }            
         }
-        else if(_isFootStepSoundPlay && (!_isGround || math.abs(RigidBody2D.linearVelocityX) < 0.1f))
+        else if((!_isGround || math.abs(RigidBody2D.linearVelocityX) < 0.1f))
         {
-            _isFootStepSoundPlay = false;
-            SoundManager.Instance.FootStepStop();
+            PlayerAudioSource.Pause();
         }
     }
 
@@ -201,7 +218,7 @@ public class Player : MonoBehaviour
             else if (_doubleJumpCount > 0 && !IsStop)
             {
                 _doubleJumpCount--;
-                //SoundManager.Instance.SoundPlay(DoubleJumpSound);
+                SoundManager.Instance.SFXPlay(DoubleJumpSound);
                 RigidBody2D.linearVelocityY = JumpPlusPower;
             }
         }
@@ -314,17 +331,18 @@ public class Player : MonoBehaviour
             Debug.Log("패링 실패");
             StartCoroutine(HurtDuration());
             ParryCode.OnParryEnd();
-            Animator.Play("player_idle", -1, 0);
+            //Animator.Play("player_idle", -1, 0);
             OnAttackEnd();
             s_HP -= 20;
             if (s_HP <= 0)
             {
-                s_HP = 0;   
+                s_HP = 0;  
+                Instantiate(HitEffectPrefeb, collision.ClosestPoint(transform.position), quaternion.identity); 
                 Die();
             }
             else
             {
-                StartCoroutine(GetDamage()); //get_dagage() 실행 (IEnumerator는 StartCoroutine이 반드시 필요하다.)
+                StartCoroutine(GetDamage());
                 Instantiate(HitEffectPrefeb, collision.ClosestPoint(transform.position), quaternion.identity);
                 RigidBody2D.linearVelocityY = 3f;
                 if (transform.position.x > collision.transform.position.x)
@@ -540,19 +558,9 @@ public class Player : MonoBehaviour
         Animator.Play("PlayerDie");
         gameObject.GetComponent<Rigidbody2D>().linearVelocityX = 0f;
     }
-    void OnDieEnd()
+    void OnGameOverWindowFadeIn()
     {
-        StartCoroutine(DIeWindow());
-    }
-    IEnumerator DIeWindow()
-    {
-        yield return TimeManager.s_Wait_1s;
-        while(_dieWindowTimer < _dieWindowTime)
-        {
-            _dieWindowTimer += Time.deltaTime;
-            DieWindow.alpha = _dieWindowTimer / _dieWindowTime;
-            yield return null;
-        }
+        StartCoroutine(GameManager.Instance.GameOverWindwoFadeIn());
     }
 }
 

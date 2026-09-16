@@ -22,7 +22,7 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
     public bool IsStun = false;
     public GameObject StunEffect;
     public SpriteRenderer PlayerSpriteRenderer;
-    public AudioClip AttackSound;
+    public AudioSource SkeletonAttackAudioSource;
 
 
     //이모션 변수
@@ -157,7 +157,11 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
     }
     void OnAttakcSoundPlay()
     {
-        SoundManager.Instance.SFXPlay(AttackSound);
+        SkeletonAttackAudioSource.Play();
+    }
+    void OnAttackSoundStop()
+    {
+        SkeletonAttackAudioSource.Stop();
     }
     void OnAttackEnd()
     {
@@ -185,7 +189,7 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
         IsAttack = false;
         LastAttack = 0f;
         StartCoroutine(StunDuration());
-        Animator.Play("skeleton_hurt", -1, 0);
+        Animator.SetTrigger("hurt");
         if (!PlayerSpriteRenderer.flipX)
         {
             SpriteRenderer.flipX = true;

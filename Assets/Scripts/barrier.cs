@@ -10,6 +10,7 @@ public class Barrier : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             BarrierMessage.SetActive(true);
+            SoundManager.Instance.BossSayEffectPlay();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

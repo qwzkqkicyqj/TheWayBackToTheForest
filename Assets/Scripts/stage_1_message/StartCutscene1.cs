@@ -46,6 +46,7 @@ public class StartCutscene1 : MonoBehaviour
             Barrier.SetActive(true);
             PlayerTransform.position = new Vector3(154.8972f, -2.969146f, 0);
             BackGroundTransform.position = new Vector3(154.8972f, BackGroundTransform.position.y, 0);
+            SoundManager.Instance.BossSayEffectStop();
             Destroy(gameObject);
         }
     }
@@ -53,14 +54,17 @@ public class StartCutscene1 : MonoBehaviour
     {
         yield return TimeManager.s_Wait_1s;
         Message1.SetActive(true);
+        SoundManager.Instance.BossSayEffectPlay();
         yield return TimeManager.s_Wait_2s;
         Message1.SetActive(false);
         yield return TimeManager.s_Wait_1s;
         Message2.SetActive(true);
+        SoundManager.Instance.BossSayEffectPlay();
         yield return TimeManager.s_Wait_2s;
         Message2.SetActive(false);
         yield return TimeManager.s_Wait_0_7s;
         Message3.SetActive(true);
+        SoundManager.Instance.BossSayEffectPlay();
         yield return TimeManager.s_Wait_0_05s;
         Player.IsStop = true;
         QuestionMark.SetActive(false);
@@ -74,9 +78,11 @@ public class StartCutscene1 : MonoBehaviour
         yield return TimeManager.s_Wait_0_7s;
         ExclamationMark.SetActive(false);
         yield return TimeManager.s_Wait_1_1s;
+        SoundManager.Instance.BossSayEffectPlay();
         Message4.SetActive(true);
         yield return TimeManager.s_Wait_4_5s;
         Message4.SetActive(false);
+        SoundManager.Instance.BossSayEffectPlay();
         Message5.SetActive(true);
         yield return TimeManager.s_Wait_3s;
         Message5.SetActive(false);

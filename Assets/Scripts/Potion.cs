@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Potion : MonoBehaviour
 {
-
+    public AudioClip PotionGetSound;
     public GameObject FMessage;
     Player _player;
 
@@ -22,6 +22,7 @@ public class Potion : MonoBehaviour
             FMessage.SetActive(true);
             if (_player.IsFPress)
             {
+                SoundManager.Instance.SFXPlay(PotionGetSound);
                 Player.s_PotionCount ++;
                 Destroy(gameObject);
             }
