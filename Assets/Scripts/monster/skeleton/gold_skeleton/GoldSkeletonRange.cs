@@ -15,29 +15,37 @@ public class GoldSkeletonRange : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (collision.gameObject.transform.position.x < SkeletonObjectTransform.transform.position.x && !PlayerCode.IsDie)
+            if(!PlayerCode.IsDie)
             {
-                if (Physics2D.OverlapCircle(LeftAir.transform.position, AirCheckRadius, Ground))
+                if (collision.gameObject.transform.position.x < SkeletonObjectTransform.transform.position.x)
                 {
-                    Target = collision.gameObject;
+                    if (Physics2D.OverlapCircle(LeftAir.transform.position, AirCheckRadius, Ground))
+                    {
+                        Target = collision.gameObject;
+                    }
+                    else
+                    {
+                        Target = null;
+                        GoldSkeletonObjectRigidBody2D.linearVelocityX = 0;
+                    }
                 }
-                else
+                else if (collision.gameObject.transform.position.x > SkeletonObjectTransform.transform.position.x)
                 {
-                    Target = null;
-                    GoldSkeletonObjectRigidBody2D.linearVelocityX = 0;
+                    if (Physics2D.OverlapCircle(RightAir.transform.position, AirCheckRadius, Ground))
+                    {
+                        Target = collision.gameObject;
+                    }
+                    else
+                    {
+                        Target = null;
+                        GoldSkeletonObjectRigidBody2D.linearVelocityX = 0;
+                    }
                 }
+
             }
-            else if (collision.gameObject.transform.position.x > SkeletonObjectTransform.transform.position.x)
+            else
             {
-                if (Physics2D.OverlapCircle(RightAir.transform.position, AirCheckRadius, Ground))
-                {
-                    Target = collision.gameObject;
-                }
-                else
-                {
-                    Target = null;
-                    GoldSkeletonObjectRigidBody2D.linearVelocityX = 0;
-                }
+                Target = null;
             }
         }
     }

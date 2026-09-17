@@ -33,7 +33,7 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance = null;
     public int SlotNumber;
     public string EncryptAndDecryptKey = "chungkang";
-    PlayerData PlayerData = new PlayerData();
+    public PlayerData PlayerData = new PlayerData();
     SoundData SoundData = new SoundData();
     private void Awake()
     {

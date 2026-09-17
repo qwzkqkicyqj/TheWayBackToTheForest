@@ -36,8 +36,6 @@ public class GoldSkeleton : MonoBehaviour, IEnemyStun
     float _rotation;
     Vector3 _originalStunPosition;
 
-
-
     void Start()
     {
         RigidBody2D = GetComponent<Rigidbody2D>();
@@ -51,7 +49,6 @@ public class GoldSkeleton : MonoBehaviour, IEnemyStun
         _originalStunPosition = StunEffect.transform.localPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!IsDie)

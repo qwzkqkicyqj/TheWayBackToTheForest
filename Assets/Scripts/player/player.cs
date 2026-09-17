@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
     public bool IsStop = false;
     public bool IsFPress = false; //상호작용 상태 확인
     public bool IsFHold = false;
-    public bool IsDie;
+    public bool IsDie = false;
     public bool IsParry = false;
     public bool IsInvincible = false;
     public bool IsParrySuccess = false;
@@ -556,11 +556,11 @@ public class Player : MonoBehaviour
         IsDie = true;
         IsStop = true;
         Animator.Play("PlayerDie");
-        gameObject.GetComponent<Rigidbody2D>().linearVelocityX = 0f;
+        RigidBody2D.linearVelocityX = 0f;
     }
     void OnGameOverWindowFadeIn()
     {
-        StartCoroutine(GameManager.Instance.GameOverWindwoFadeIn());
+        StartCoroutine(GameOverManager.Instance.GameOverWindwoFadeIn());
     }
 }
 

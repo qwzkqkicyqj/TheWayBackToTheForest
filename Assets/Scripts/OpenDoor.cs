@@ -32,12 +32,16 @@ public class OpenDoor : MonoBehaviour
                 FMessage.SetActive(true);
                 if (Player.IsFHold && !Player.IsDie && PlayerRigidBody2D.linearVelocityY == 0)
                 {
+                    if(_fHoldTimer == 0)
+                    {
+                        SoundManager.Instance.UnlockSoundPlay();
+                    }
                     _fHoldTimer += Time.deltaTime;
-                    Debug.Log(_fHoldTimer);
                 }
                 else
                 {
                     _fHoldTimer = 0;
+                    SoundManager.Instance.UnlockSoundStop();
                 }
                 Gauge.fillAmount = _fHoldTimer / _fHoldSet;
                 if (_fHoldTimer >= _fHoldSet)

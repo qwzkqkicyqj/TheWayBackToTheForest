@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
     public static bool s_MasterVolumeMute;
     public AudioMixer AudioMixer;
     public AudioSource BossSayEffectAudioSource;
+    public AudioSource UnlockSoundAudioSource;
     private void Awake()
     {
         if (Instance == null)
@@ -70,14 +71,14 @@ public class SoundManager : MonoBehaviour
     }
     void OnLoadedScene(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex == 2)
-        {
-            BGMAudioSource.clip = DungeonBGMClip;
-            BGMAudioSource.Play();
-        }
         if (scene.buildIndex == 0)
         {
             BGMAudioSource.clip = ForestBGMClip;
+            BGMAudioSource.Play();
+        }
+        else
+        {
+            BGMAudioSource.clip = DungeonBGMClip;
             BGMAudioSource.Play();
         }
         if (scene.buildIndex == 5)
@@ -110,5 +111,13 @@ public class SoundManager : MonoBehaviour
     public void BossSayEffectStop()
     {
         BossSayEffectAudioSource.Stop();
+    }
+    public void UnlockSoundPlay()
+    {
+        UnlockSoundAudioSource.Play();
+    }
+    public void UnlockSoundStop()
+    {
+        UnlockSoundAudioSource.Stop();
     }
 }
