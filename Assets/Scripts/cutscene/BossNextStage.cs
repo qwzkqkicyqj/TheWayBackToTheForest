@@ -19,6 +19,7 @@ public class BossNextStage : MonoBehaviour
 
     IEnumerator NextStage()
     {
+        DataManager.Instance.PlayerData.IsClear = true;
         PlayerCode.IsStop = true;
         PlayerObject.GetComponent<Rigidbody2D>().linearVelocityX = 10f;
         UnityEngine.UI.Image _image = CutsceneBackground.GetComponent<UnityEngine.UI.Image>();
@@ -33,6 +34,6 @@ public class BossNextStage : MonoBehaviour
             yield return null;
         }
         yield return TimeManager.s_Wait_0_5s;
-        SceneManager.LoadScene("Ending");
+        SceneManager.LoadScene(0);
     }
 }

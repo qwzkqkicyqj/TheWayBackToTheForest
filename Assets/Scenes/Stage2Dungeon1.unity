@@ -76462,7 +76462,7 @@ MonoBehaviour:
   DoubleJumpSound: {fileID: 8300000, guid: 70dec2f9123b22a4794d4865533b1ac2, type: 3}
   RunSound: {fileID: 8300000, guid: f2b4489c1f91fdf4495762bc8e9b7ff8, type: 3}
   WarkSound: {fileID: 8300000, guid: 1d8528b8db0c1b34d9f9228ed20e64f6, type: 3}
-  HitSound: {fileID: 0}
+  HurtSound: {fileID: 8300000, guid: f4867cb5df5b7f9468fa9549d1a33b25, type: 3}
   DashSound: {fileID: 0}
   LandSound: {fileID: 8300000, guid: a6fab361859f3cc468d72faaa09e00d6, type: 3}
   Speed: 10

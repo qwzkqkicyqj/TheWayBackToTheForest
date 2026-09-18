@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public AudioClip DoubleJumpSound;
     public AudioClip RunSound;
     public AudioClip WarkSound;
-    public AudioClip HitSound;
+    public AudioClip HurtSound;
     public AudioClip DashSound;
     public AudioClip LandSound;
 
@@ -291,6 +291,7 @@ public class Player : MonoBehaviour
         if (collision.transform.CompareTag("Damage") && !IsDash && !_isHurt && !IsInvincible && !IsDie) //충돌한 오브젝트의 태그가 damage라면
         {
             s_HP -= 20;
+            SoundManager.Instance.SFXPlay(HurtSound);
             if (s_HP <= 0)
             {
                 s_HP = 0;
@@ -309,6 +310,7 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Damage") && !IsDash && !IsDie && !_isHurt && !IsInvincible) //충돌한 오브젝트의 태그가 damage라면
         {
+            SoundManager.Instance.SFXPlay(HurtSound);
             s_HP -= 20;
             if (s_HP <= 0)
             {
@@ -333,6 +335,7 @@ public class Player : MonoBehaviour
             ParryCode.OnParryEnd();
             //Animator.Play("player_idle", -1, 0);
             OnAttackEnd();
+            SoundManager.Instance.SFXPlay(HurtSound);
             s_HP -= 20;
             if (s_HP <= 0)
             {

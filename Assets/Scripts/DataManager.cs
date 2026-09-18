@@ -66,7 +66,6 @@ public class DataManager : MonoBehaviour
     void PlayerDataSave()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0) return;
-        if (SceneManager.GetActiveScene().buildIndex == 5) PlayerData.IsClear = true;
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             PlayerData.SceneNumber = SceneManager.GetActiveScene().buildIndex;
