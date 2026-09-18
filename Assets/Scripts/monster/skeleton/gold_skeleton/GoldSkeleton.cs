@@ -27,7 +27,8 @@ public class GoldSkeleton : MonoBehaviour, IEnemyStun
     public bool IsStun = false;
     bool _isAttack2 = false;
 
-
+    public AudioClip Attack1Sound;
+    public AudioClip Attack2Sound;
 
     //이모션 변수
     public GameObject QuestionMark;
@@ -35,7 +36,7 @@ public class GoldSkeleton : MonoBehaviour, IEnemyStun
     Vector3 _originalPosition;
     float _rotation;
     Vector3 _originalStunPosition;
-
+    public AudioSource SkeletonAttackAudioSource;
     void Start()
     {
         RigidBody2D = GetComponent<Rigidbody2D>();
@@ -221,7 +222,20 @@ public class GoldSkeleton : MonoBehaviour, IEnemyStun
         yield return TimeManager.s_Wait_3s;
         IsStun = false;
     }
-
+    void OnAttack2SoundPlay()
+    {
+        SkeletonAttackAudioSource.clip = Attack2Sound;
+        SkeletonAttackAudioSource.Play();
+    }
+    void OnAttack1SoundPlay()
+    {
+        SkeletonAttackAudioSource.clip = Attack1Sound;
+        SkeletonAttackAudioSource.Play();
+    }
+    void OnAttackSoundStop()
+    {
+        SkeletonAttackAudioSource.Stop();
+    }
     public void Stun()
     {
         _stunCount++;

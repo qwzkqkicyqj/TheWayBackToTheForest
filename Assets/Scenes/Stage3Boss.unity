@@ -514,6 +514,11 @@ MonoBehaviour:
   TopLightAnimator: {fileID: 1544576062}
   BossCode: {fileID: 1604320131}
   TopLightObject: {fileID: 1544576061}
+  PotopHitSound:
+  - {fileID: 8300000, guid: 52aad7b1003b85541abba2fbcb0149eb, type: 3}
+  - {fileID: 8300000, guid: 60f61869adf6afa44a12940fe0cd9418, type: 3}
+  - {fileID: 8300000, guid: bbefa21c850717a44b507669c94e0488, type: 3}
+  - {fileID: 8300000, guid: 0199a5d043817564dbcb66429227674c, type: 3}
   Hp: 0
   IsDie: 0
 --- !u!95 &177349389
@@ -1553,6 +1558,135 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.045398027}
   m_Radius: 0.30064368
+--- !u!1 &356572920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356572921}
+  - component: {fileID: 356572922}
+  m_Layer: 7
+  m_Name: PlayerFootStepAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &356572921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356572920}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.6680647, y: 0.38611922, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1467756090}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &356572922
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356572920}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5522445942851905577, guid: 8571e33c10bb34a43a205d4e82ffee76, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &364500587
 GameObject:
   m_ObjectHideFlags: 0
@@ -79233,6 +79367,7 @@ Transform:
   - {fileID: 471922794}
   - {fileID: 1563347337}
   - {fileID: 1528911328}
+  - {fileID: 356572921}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1467756091
@@ -79247,14 +79382,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10882c4b54f7e9748a4356363871d85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player
-  AttackSound: {fileID: 8300000, guid: 4763b6a31662be14a8a43539e91f1c40, type: 3}
-  JumpSound: {fileID: 0}
-  DoubleJumpSound: {fileID: 0}
-  RunSound: {fileID: 0}
-  WarkSound: {fileID: 0}
-  HitSound: {fileID: 0}
-  DashSound: {fileID: 8300000, guid: a082481f25fab87439c74662ee023a7f, type: 3}
-  LandSound: {fileID: 0}
+  AttackSound: {fileID: 8300000, guid: 70e1f46bec719f943992ab4975228472, type: 3}
+  JumpSound: {fileID: 8300000, guid: 64bde9bd20afcfa4a9480c081ef77083, type: 3}
+  DoubleJumpSound: {fileID: 8300000, guid: 70dec2f9123b22a4794d4865533b1ac2, type: 3}
+  RunSound: {fileID: 8300000, guid: f2b4489c1f91fdf4495762bc8e9b7ff8, type: 3}
+  WarkSound: {fileID: 8300000, guid: 1d8528b8db0c1b34d9f9228ed20e64f6, type: 3}
+  HurtSound: {fileID: 8300000, guid: f4867cb5df5b7f9468fa9549d1a33b25, type: 3}
+  DashSound: {fileID: 0}
+  LandSound: {fileID: 8300000, guid: a6fab361859f3cc468d72faaa09e00d6, type: 3}
   Speed: 10
   JumpPower: 15
   JumpPlusPower: 12
@@ -79295,7 +79430,7 @@ MonoBehaviour:
   ParryEffectPrefeb: {fileID: 997923599826956670, guid: c2ae7d48225ae0745b403c7dc5f3cd20, type: 3}
   HealEffectTransform: {fileID: 1528911328}
   HealEffect: {fileID: 1528911324}
-  PlayerAudioSource: {fileID: 0}
+  PlayerAudioSource: {fileID: 356572922}
 --- !u!1 &1496866829
 GameObject:
   m_ObjectHideFlags: 0
@@ -79934,6 +80069,7 @@ MonoBehaviour:
   PlayerCode: {fileID: 1467756091}
   ParryEffectPrefab: {fileID: 997923599826956670, guid: c2ae7d48225ae0745b403c7dc5f3cd20, type: 3}
   PlayerTransform: {fileID: 1467756090}
+  ParrySound: {fileID: 0}
 --- !u!4 &1563347337
 Transform:
   m_ObjectHideFlags: 0
@@ -82079,6 +82215,11 @@ MonoBehaviour:
   TopLightAnimator: {fileID: 1284724780}
   BossCode: {fileID: 1604320131}
   TopLightObject: {fileID: 1284724779}
+  PotopHitSound:
+  - {fileID: 8300000, guid: 52aad7b1003b85541abba2fbcb0149eb, type: 3}
+  - {fileID: 8300000, guid: 60f61869adf6afa44a12940fe0cd9418, type: 3}
+  - {fileID: 8300000, guid: bbefa21c850717a44b507669c94e0488, type: 3}
+  - {fileID: 8300000, guid: 0199a5d043817564dbcb66429227674c, type: 3}
   Hp: 0
   IsDie: 0
 --- !u!1 &1985004243

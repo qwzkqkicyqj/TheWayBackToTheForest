@@ -82,7 +82,7 @@ public class BossPage1 : MonoBehaviour
         if (!isAttack && !HpHalf && !isDoubleAttackStart && !is1PageEnd)
         {
             _attackNum = UnityEngine.Random.Range(1, 6);
-            switch (2)
+            switch (_attackNum)
             {
                 case 1:
                     isAttack = true;

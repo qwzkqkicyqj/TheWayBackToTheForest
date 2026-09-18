@@ -11,6 +11,8 @@ public class Top : MonoBehaviour
     public BossPage1 BossCode;
     public GameObject TopLightObject;
 
+    public AudioClip[] PotopHitSound;
+
     public int Hp = 200;
     bool isStart = false;
     public bool IsDie = false;
@@ -39,7 +41,8 @@ public class Top : MonoBehaviour
                 }
                     
 
-                Hp -= 100;
+                Hp -= 20;
+                SoundManager.Instance.SFXPlay(PotopHitSound[Random.Range(0, 4)]);
                 if (Hp <= 0)
                 {
                     TopLightAnimator.SetTrigger("die");

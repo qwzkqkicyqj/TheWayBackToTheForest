@@ -32,19 +32,19 @@ public class WhiteSkeletonBody : MonoBehaviour
             SkeletonCode.Hp -= 20;
             if (!PlayerSpriteRenderer.flipX)
             {
-                SkeletonObject.GetComponent<SpriteRenderer>().flipX = true;
+                SkeletonSpriteRenderer.flipX = true;
                 SkeletonRigidBody2D.linearVelocityX = 0;
                 SkeletonRigidBody2D.AddForceX(KnockbackForce, ForceMode2D.Impulse);
             }
             else if (PlayerSpriteRenderer.flipX)
             {
-                SkeletonObject.GetComponent<SpriteRenderer>().flipX = false;
+                SkeletonSpriteRenderer.flipX = false;
                 SkeletonRigidBody2D.linearVelocityX = 0;
                 SkeletonRigidBody2D.AddForceX(-KnockbackForce, ForceMode2D.Impulse);
             }
             if (SkeletonCode.Hp <= 0)
             {
-                SkeletonObject.GetComponent<Rigidbody2D>().linearVelocityX = 0;
+                SkeletonRigidBody2D.linearVelocityX = 0;
                 SkeletonCode.IsDie = true;
                 SkeletonObjectAnimator.SetTrigger("die");
             }

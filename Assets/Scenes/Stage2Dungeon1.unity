@@ -75619,6 +75619,7 @@ MonoBehaviour:
   PlayerCode: {fileID: 2135957202}
   ParryEffectPrefab: {fileID: 997923599826956670, guid: c2ae7d48225ae0745b403c7dc5f3cd20, type: 3}
   PlayerTransform: {fileID: 2135957201}
+  ParrySound: {fileID: 8300000, guid: 9cd434baf651ba24b826f0a8762c7140, type: 3}
 --- !u!212 &2031982355
 SpriteRenderer:
   serializedVersion: 2

@@ -24,7 +24,6 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
     public SpriteRenderer PlayerSpriteRenderer;
     public AudioSource SkeletonAttackAudioSource;
 
-
     //이모션 변수
     public GameObject QuestionMark;
     public GameObject ExclamationMark;
@@ -34,7 +33,6 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
 
     void Start()
     {
-        Animator = GetComponent<Animator>();
         float rotation = QuestionMark.transform.localRotation.x;
         float position = QuestionMark.transform.localPosition.x;
         _originalEmotionPosition = QuestionMark.transform.localPosition;
@@ -155,7 +153,7 @@ public class WhiteSkeleton : MonoBehaviour, IEnemyStun
             }
         }
     }
-    void OnAttakcSoundPlay()
+    void OnAttackSoundPlay()
     {
         SkeletonAttackAudioSource.Play();
     }

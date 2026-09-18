@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class Parry : MonoBehaviour
     public Player PlayerCode;
     public GameObject ParryEffectPrefab;
     public Transform PlayerTransform;
+    public AudioClip ParrySound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,6 +17,8 @@ public class Parry : MonoBehaviour
             Debug.Log("패링 성공");
             PlayerCode.IsInvincible = true;
             collision.transform.parent.GetComponent<IEnemyStun>().Stun();
+            SoundManager.Instance.SFXPlay(ParrySound);
+            StartCoroutine(HitStop());
             Instantiate(ParryEffectPrefab, (collision.transform.position + gameObject.transform.position)/2, Quaternion.identity);
             PlayerCode.IsParrySuccess = true;
         }
@@ -24,5 +28,12 @@ public class Parry : MonoBehaviour
     {
         PlayerCode.IsParry = false;
         gameObject.SetActive(false);
+    }
+
+    IEnumerator HitStop()
+    {
+        Time.timeScale = 0;
+        yield return TimeManager.s_WaitRealTime_0_15;
+        Time.timeScale = 1;
     }
 }

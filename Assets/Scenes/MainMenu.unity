@@ -33840,6 +33840,7 @@ GameObject:
   - component: {fileID: 1276500056}
   - component: {fileID: 1276500055}
   - component: {fileID: 1276500060}
+  - component: {fileID: 1276500061}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -34036,6 +34037,18 @@ MonoBehaviour:
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!225 &1276500061
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276500054}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1289803875
 GameObject:
   m_ObjectHideFlags: 0
@@ -47130,7 +47143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1841468391
 Transform:
   m_ObjectHideFlags: 0
@@ -47158,9 +47171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d88c5abe7d07ad149b4c33786c9de591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ending
-  CutsceneBackground: {fileID: 0}
   GoMainMenu: {fileID: 622731001}
-  Player: {fileID: 0}
+  Player: {fileID: 824092460}
+  BackGround: {fileID: 431024256}
 --- !u!1 &1841745152
 GameObject:
   m_ObjectHideFlags: 0

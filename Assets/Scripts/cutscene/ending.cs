@@ -4,10 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class Ending : MonoBehaviour
 {
-    public GameObject CutsceneBackground;
     public Transform GoMainMenu;
     public Transform Player;
-
+    public Transform BackGround;
     void Start()
     {
         StartCoroutine(FadeEffectManager.Instance.FadeIn());
@@ -17,7 +16,8 @@ public class Ending : MonoBehaviour
     {
         if(Player.position.x >= GoMainMenu.position.x)
         {
-            SceneManager.LoadScene(0);
+            Player.position = new Vector2(-2.969164f, 0);
+            BackGround.position = new Vector2(-2.969164f, BackGround.position.y);
         }
     }
 }
