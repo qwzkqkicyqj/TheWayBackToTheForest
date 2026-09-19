@@ -970,9 +970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65cd16fffaf39af478ae0e6a6c9ceb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::boss_next_stage
-  CutsceneBackground: {fileID: 1519765527}
   PlayerCode: {fileID: 1467756091}
-  PlayerObject: {fileID: 1467756091}
+  PlayerRigidbody2D: {fileID: 1467756088}
 --- !u!1 &203174817
 GameObject:
   m_ObjectHideFlags: 0
@@ -80069,7 +80068,7 @@ MonoBehaviour:
   PlayerCode: {fileID: 1467756091}
   ParryEffectPrefab: {fileID: 997923599826956670, guid: c2ae7d48225ae0745b403c7dc5f3cd20, type: 3}
   PlayerTransform: {fileID: 1467756090}
-  ParrySound: {fileID: 0}
+  ParrySound: {fileID: 8300000, guid: 9cd434baf651ba24b826f0a8762c7140, type: 3}
 --- !u!4 &1563347337
 Transform:
   m_ObjectHideFlags: 0

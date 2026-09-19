@@ -325,12 +325,10 @@ public class Player : MonoBehaviour
         }
         if (collision.CompareTag("EnemyAttack") && ParryCollider.IsTouching(collision) && !_isHurt && Vector3.Distance(collision.transform.position, transform.position) > Vector3.Distance(collision.transform.position, ParryTransform.transform.position))
         {
-            Debug.Log("패링 작동");
             StartCoroutine(InvincibleDurationn());
         }
         else if (collision.CompareTag("EnemyAttack") && !IsDash && !_isHurt && !IsInvincible && !IsDie)
         {
-            Debug.Log("패링 실패");
             StartCoroutine(HurtDuration());
             ParryCode.OnParryEnd();
             //Animator.Play("player_idle", -1, 0);
@@ -376,10 +374,12 @@ public class Player : MonoBehaviour
 
     private IEnumerator GetDamage()
     {
+        Debug.Log("타격, 멈춤");
         Time.timeScale = 0f; //게임을 멈춤
         SpriteRenderer.color = Color.red;
         yield return TimeManager.s_WaitRealTime_0_15;
         Time.timeScale = 1f; //게임을 다시 재생
+        Debug.Log("타격, 실행");
         SpriteRenderer.color = Color.white;
     }
 

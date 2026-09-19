@@ -32,8 +32,10 @@ public class Parry : MonoBehaviour
 
     IEnumerator HitStop()
     {
-        Time.timeScale = 0;
-        yield return TimeManager.s_WaitRealTime_0_15;
-        Time.timeScale = 1;
+        //Time.timeScale = 0.1f;
+        //Debug.Log("멈춤");
+        yield return new WaitForSecondsRealtime(0.15f);
+        //Time.timeScale = 1;
+        //Debug.Log("멈춤 끝");
     }
 }

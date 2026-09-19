@@ -2962,7 +2962,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 21
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3713219614965599903, guid: b0ff1bf4d2cbef847ab5a29f6d49f860, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6160,7 +6160,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 21
+  m_SortingOrder: 22
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5505686903551298276, guid: a932d9b60b2ace341b1ba1d7946b49d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7158,53 +7158,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &799880594
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 799880596}
-  - component: {fileID: 799880595}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &799880595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799880594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d825f6ffb4563a45b812abe835ee259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  DieWindow: {fileID: 0}
-  _dieWindowTimer: 0
-  GameOver: {fileID: 8300000, guid: d394651e50fb35b4383e657ef38a83ce, type: 3}
---- !u!4 &799880596
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799880594}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.76975, y: -6.44714, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &819334713
 GameObject:
   m_ObjectHideFlags: 0
@@ -94874,6 +94827,5 @@ SceneRoots:
   - {fileID: 511498692}
   - {fileID: 1754876241}
   - {fileID: 1151834107}
-  - {fileID: 799880596}
   - {fileID: 1935456704}
   - {fileID: 349135936}

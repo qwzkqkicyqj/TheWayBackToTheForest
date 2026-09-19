@@ -115,8 +115,6 @@ public class DataManager : MonoBehaviour
         SoundData.BGMVolumeMute = SoundManager.s_BGMVolumeMute;
         SaveData = JsonUtility.ToJson(SoundData);
         File.WriteAllText(Application.persistentDataPath + "/Option", SaveData);
-        float test = SoundManager.s_MasterVolume;
-        Debug.Log(test);
         Debug.Log("설정 완료");
     }
     void SoundDataLoad()

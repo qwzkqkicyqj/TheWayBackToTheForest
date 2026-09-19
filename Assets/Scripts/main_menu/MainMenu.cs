@@ -1,16 +1,10 @@
-using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public class MainMenu : MonoBehaviour
 {
     [Header("메인 메뉴 UI 오브젝트")]
@@ -30,7 +24,7 @@ public class MainMenu : MonoBehaviour
     float _fadeTimer;
     public Button LoadButton;
     public GameObject LoadGaemSaveSlot;
-    public CanvasGroup[] LoadGameSlotButtonCanvasGroup; 
+    public CanvasGroup[] LoadGameSlotButtonCanvasGroup;
     public TextMeshProUGUI[] LoadGameSlotButtonText;
     Stack<GameObject> _openWindow = new Stack<GameObject>();
     public GameObject DeleteWarning;
@@ -56,11 +50,31 @@ public class MainMenu : MonoBehaviour
     public Button MasterVolumeMuteButton;
     public Button SFXVolumeMuteButton;
     public Button BGMVolumeMuteButton;
-    public GameObject FadeObject;
-    public Image FadeObjectImage;
+    public CanvasGroup MainMenuCanvasGroup;
+    public Ending EndingCode;
+    public Transform PlayerTransform;
+    public GameObject EndingObject;
+    private void OnEnable()
+    {
+        if (DataManager.Instance.PlayerData.IsClear && !EndingCode.EndingCutSceneEnd)
+        {
+            Debug.Log(DataManager.Instance.PlayerData.IsClear);
+            PlayerTransform.position = new Vector2(-196.3075f, Player.transform.position.y);
+            EndingObject.SetActive(true);
+            gameObject.SetActive(false);
+            return;
+        }
+        else if (DataManager.Instance.PlayerData.IsClear && EndingCode.EndingCutSceneEnd)
+        {
+            StartCoroutine(MainMenuFadeIn());
+        }
+        else
+        {
+            StartCoroutine(FadeEffectManager.Instance.FadeIn());
+        }
+    }
     private void Start()
     {
-        StartCoroutine(FadeEffectManager.Instance.FadeIn());
         ReLoadData();
         MasterVolumeSlider.value = SoundManager.s_MasterVolume;
         SFXVolumeSlider.value = SoundManager.s_SFXVolume;
@@ -119,7 +133,7 @@ public class MainMenu : MonoBehaviour
         File.Delete(Application.persistentDataPath + "/game" + DeleteDataNumber);
         StartCoroutine(SlotDataDeleteAndCheck(DeleteDataNumber));
     }
-    public void OnClickDataDeleteNo()   
+    public void OnClickDataDeleteNo()
     {
         DeleteWarningText.text = "정말 데이터를 삭제하시겠습니까?";
         DeleteYesButton.interactable = true;
@@ -128,11 +142,11 @@ public class MainMenu : MonoBehaviour
     }
     void OnCloseWindowAndPause()
     {
-        if(_openWindow.Count > 0 && !_isDeleting)
+        if (_openWindow.Count > 0 && !_isDeleting)
         {
-            
-            if(_openWindow.Peek().CompareTag("Option"))
-            { 
+
+            if (_openWindow.Peek().CompareTag("Option"))
+            {
                 DataManager.Instance.SoundDataSave();
             }
             _openWindow.Pop().SetActive(false);
@@ -146,10 +160,11 @@ public class MainMenu : MonoBehaviour
         while (_fadeTimer < _fadeTime)
         {
             _fadeTimer += Time.deltaTime;
-            color.a =1 -  _fadeTimer/_fadeTime;
+            color.a = 1 - _fadeTimer / _fadeTime;
             TitleImage.color = color;
             yield return null;
         }
+        _fadeTimer = 0;
         TitleFadeEnd = true;
     }
     IEnumerator SlotDataDeleteAndCheck(int i)
@@ -201,11 +216,11 @@ public class MainMenu : MonoBehaviour
                 {
                     LoadGameSlotButtonCanvasGroup[i].interactable = true;
                     LoadGameSlotButtonCanvasGroup[i].alpha = 1f;
-                    LoadGameSlotButtonText[i].text = "게임" + (i + 1) + " 불러오기";  
+                    LoadGameSlotButtonText[i].text = "게임" + (i + 1) + " 불러오기";
                 }
                 else
                 {
-                    
+
                     LoadGameSlotButtonCanvasGroup[i].interactable = false;
                     LoadGameSlotButtonCanvasGroup[i].alpha = 0.7f;
                     LoadGameSlotButtonText[i].text = "게임" + (i + 1) + " 데이터 파일 없음";
@@ -229,7 +244,7 @@ public class MainMenu : MonoBehaviour
             else
             {
                 NewGameSlotButtonCanvasGroup[i].interactable = true;
-                NewGameSlotButtonCanvasGroup[i].alpha = 1f; 
+                NewGameSlotButtonCanvasGroup[i].alpha = 1f;
                 NewGameSlotButtonText[i].text = "새로운 게임 시작하기";
                 NewGameSlotDeleteButton[i].interactable = false;
                 NewGameSlotDeleteButton[i].alpha = 0.7f;
@@ -241,47 +256,48 @@ public class MainMenu : MonoBehaviour
         if (sound == "Master")
         {
             SoundManager.s_MasterVolumeMute = SoundManager.s_MasterVolumeMute ? false : true;
+            MasterVolumeMuteGameObject.SetActive(SoundManager.s_MasterVolumeMute);
         }
         if (sound == "SFX")
         {
             SoundManager.s_SFXVolumeMute = SoundManager.s_SFXVolumeMute ? false : true;
+            SFXVolumeMuteGameObject.SetActive(SoundManager.s_SFXVolumeMute);
         }
         if (sound == "BGM")
         {
             SoundManager.s_BGMVolumeMute = SoundManager.s_BGMVolumeMute ? false : true;
+            BGMVolumeMuteGameObject.SetActive(SoundManager.s_BGMVolumeMute);
         }
     }
-    public void SoundStateUpdate()
+
+    public void OnMasterSliderValueChanged()
     {
         MasterVolumeStateText.text = $"{MasterVolumeSlider.value}/100";
         SoundManager.s_MasterVolume = MasterVolumeSlider.value;
+    }
+
+    public void OnBGMSliderValueChanged()
+    {
         BGMVolumeStateText.text = $"{BGMVolumeSlider.value}/100";
         SoundManager.s_BGMVolume = BGMVolumeSlider.value;
+    }
+
+    public void OnSoundSFXSliderValueChanged()
+    {
         SFXVolumeStateText.text = $"{SFXVolumeSlider.value}/100";
         SoundManager.s_SFXVolume = SFXVolumeSlider.value;
-        if (SoundManager.s_MasterVolumeMute)
+    }
+
+    IEnumerator MainMenuFadeIn()
+    {
+        MainMenuCanvasGroup.blocksRaycasts = false;
+        while(_fadeTimer < _fadeTime)
         {
-            MasterVolumeMuteGameObject.SetActive(true);
+            _fadeTimer += Time.deltaTime;
+            MainMenuCanvasGroup.alpha = _fadeTimer / _fadeTime;
+            yield return null;
         }
-        else
-        {
-            MasterVolumeMuteGameObject.SetActive(false);
-        }
-        if (SoundManager.s_SFXVolumeMute)
-        {
-            SFXVolumeMuteGameObject.SetActive(true);
-        }
-        else
-        {
-            SFXVolumeMuteGameObject.SetActive(false);
-        }
-        if (SoundManager.s_BGMVolumeMute)
-        {
-            BGMVolumeMuteGameObject.SetActive(true);
-        }
-        else
-        {
-            BGMVolumeMuteGameObject.SetActive(false);
-        }
+        MainMenuCanvasGroup.blocksRaycasts = true;
+        _fadeTimer = 0;
     }
 }

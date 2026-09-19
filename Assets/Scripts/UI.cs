@@ -12,12 +12,12 @@ public class UI : MonoBehaviour
     public GameObject Key;
     public Player PlayerCode;
     public Image PotionGauge;
-    int TestHp = 100;
+    int TestHp = 9999;
     private void OnEnable()
     {
         HPBarUpdate();
         PotionUpdate();
-        Player.s_HP = TestHp;
+        //Player.s_HP = TestHp;
     }
 
     void Update()
